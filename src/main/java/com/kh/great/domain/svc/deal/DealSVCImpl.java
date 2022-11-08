@@ -35,7 +35,6 @@ public class DealSVCImpl implements DealSVC{
         return dealDAO.update(pNumber,deal);
     }
 
-    //상품조회
 
     //주문번호로 조회
     @Override

@@ -28,14 +28,4 @@ public class ApiDealController {
         return ApiResponse.createApiResMsg("00","성공",null);
     }
 
-//    @PatchMapping("/back/{pNumber}")
-//    public ApiResponse<Object> backBuy(@PathVariable("pNumber") Long pNumber, @RequestBody EditReq editReq){
-//        Deal deal = new Deal();
-//        BeanUtils.copyProperties(editReq,deal);
-//
-//        dealSVC.delUpdate(pNumber,deal);
-//
-//        return ApiResponse.createApiResMsg("00","성공",productSVC.findByProductNum(pNumber).getRemainCount());
-//    }
-
 }

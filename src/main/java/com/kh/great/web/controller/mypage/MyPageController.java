@@ -68,13 +68,8 @@ public class MyPageController {
     //리뷰 등록 양식
     @GetMapping("/review/add/{orderNumber}")
     public String saveForm(@PathVariable("orderNumber") Long orderNumber, Model model){
-//        Optional<Deal> foundOrderNumber = dealSVC.findByOrderNumber(orderNumber);
-//        Deal deal = foundOrderNumber.get();
-
 
         ReviewAddForm reviewAddForm = new ReviewAddForm();
-
-//        BeanUtils.copyProperties(deal,reviewAddForm);
 
         log.info("reviewAddForm={}",reviewAddForm);
         model.addAttribute("form",reviewAddForm);
@@ -157,7 +152,7 @@ public class MyPageController {
                              @ModelAttribute("form") ReviewUpdateForm reviewUpdateForm,
                              RedirectAttributes redirectAttributes,
                              HttpServletRequest request){
-//        log.info("reviewUpdateForm={}",reviewUpdateForm);
+     
         Review review = new Review();
         BeanUtils.copyProperties(reviewUpdateForm,review);
         //로그인 세션 필요
@@ -166,18 +161,16 @@ public class MyPageController {
         reviewUpdateForm.setBuyerNumber((Long)memNumber);
         review.setBuyerNumber(reviewUpdateForm.getBuyerNumber());
 
-//        log.info("review={}",review);
+
 
         Optional<Review> foundReview = myPageSVC.findByReviewNumber(reviewNumber);
-//        BeanUtils.copyProperties(foundReview,review);
+
         Review review1 = foundReview.get();
         Long buyerNumber = review1.getBuyerNumber();
-//        log.info("review={}",review);
 
         myPageSVC.update(reviewNumber, review);
 
         redirectAttributes.addAttribute("id",buyerNumber);
-
 
         return "redirect:/mypage/review/{id}";
 
@@ -226,25 +219,12 @@ public class MyPageController {
         });
 
 
-        //판매번호 조회
-
-
-        //첨부파일 조회
-//        List<UploadFile> uploadFiles = uploadFileSVC.getFilesByCodeWithRid(AttachCode.P0102.name(), profileForm.getPNumber());
-//        if(uploadFiles.size() > 0 ){
-//            profileForm.setImageFiles(uploadFiles);
-//        }
-
-
         BeanUtils.copyProperties(member1,profileForm);
-
 
         model.addAttribute("list",list);
         model.addAttribute("list2",list2);
         model.addAttribute("form",profileForm);
-        log.info("profileForm={}",profileForm);
-        log.info("list={}",list);
-        log.info("list2={}",list2);
+
 
         return "mypage/profile";
     }
@@ -306,8 +286,7 @@ public class MyPageController {
     @ResponseBody
     @DeleteMapping("/profile/del/{memNumber}")
         public  ApiResponse<Bookmark> delBookmark(@PathVariable("memNumber") Long memNumber){
-//        Optional<Member> member = myPageSVC.findMember(memNumber);
-//        Member foundMember = member.get();
+
         myPageSVC.delBookmark(memNumber);
 
         return ApiResponse.createApiResMsg("00","성공",null);
@@ -330,15 +309,7 @@ public class MyPageController {
         model.addAttribute("form" , new ProfileAddForm());
         return "mypage/profileAddForm";
     }
-//
-//    @PostMapping("/profile/add")
-//    public String profileImgAdd(@ModelAttribute("form") ProfileAddForm profileAddForm){
-//
-//        ProfileForm profile = new ProfileForm();
-//        BeanUtils.copyProperties(profileAddForm,profile);
-//
-//
-//    }
+
 
 
     //좋아요 양식

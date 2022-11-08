@@ -24,17 +24,6 @@ public class MyPageSVCImpl implements MyPageSVC {
     private final MyPageDAO myPageDAO;
     private final MemberDAO memberDAO;
 
-//    @Override
-//    public void update(Long memNumber, Member member, List<MultipartFile> files){
-//        //2) 첨부파일- 상품 설명
-//        uploadFileSVC.addFile(files, AttachCode.M0101, memNumber);
-//    }
-
-//    public Long update(Member member, List<MultipartFile> files) {
-//        Long num = memberDAO.findMemNumber(member.getMemEmail());
-//        uploadFileSVC.addFile(files, AttachCode.M0101, num);
-//        return num;
-//    }
 
     //리뷰 등록
     @Override
